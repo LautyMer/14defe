@@ -3,196 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sos el amur de mi vidam sabes💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
-    
+    <title>Para mi amor❤️</title>
     <style>
-        :root {
-            --pink-light: #ffe6fa;
-            --pink-medium: #ff85a1;
-            --pink-dark: #d63384;
-            --gradient-bg: linear-gradient(135deg, #fff0f5 0%, #ffd1dc 100%);
-        }
-
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
-            background: var(--gradient-bg);
-            font-family: 'Quicksand', sans-serif;
+            background-color: #ffe4e1; /* Rosa pastel */
+            font-family: 'Arial', sans-serif;
             overflow: hidden;
-            transition: background 0.5s;
-        }
-
-        /* Corazones flotantes de fondo */
-        .floating-heart {
-            position: absolute;
-            color: var(--pink-medium);
-            font-size: 24px;
-            pointer-events: none;
-            animation: float 6s linear infinite;
-            opacity: 0.4;
-            z-index: 1;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg) scale(0.5); opacity: 0; }
-            20% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
-        }
-
-        /* Rastro del mouse */
-        .heart-trail {
-            position: absolute;
-            color: var(--pink-dark);
-            pointer-events: none;
-            font-size: 18px;
-            animation: fadeOut 0.8s ease-out forwards;
-            z-index: 100;
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 0.8; transform: translateY(0) scale(0.8); }
-            100% { opacity: 0; transform: translateY(-25px) scale(1.5); }
         }
 
         .container {
             text-align: center;
-            /* Efecto de vidrio esmerilado (Glassmorphism) */
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 50px 40px;
-            border-radius: 35px;
-            box-shadow: 0 20px 40px rgba(214, 51, 132, 0.25);
-            max-width: 500px;
-            width: 85%;
-            z-index: 10;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
         }
 
         h1 {
-            color: var(--pink-dark);
-            font-family: 'Dancing Script', cursive;
-            font-size: 38px;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: #d63384;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
-        /* REEMPLAZO DE GIFS: Elementos visuales CSS */
-        .visual-center {
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .big-heart-pulse {
-            font-size: 100px;
-            animation: intensePulse 1.2s ease-in-out infinite;
-        }
-
-        @keyframes intensePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); filter: drop-shadow(0 0 15px var(--pink-medium)); }
-            100% { transform: scale(1); }
-        }
-
-        .celebration-emojis {
-            font-size: 60px;
-            letter-spacing: 10px;
-            animation: bounceIn 1s ease forwards;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.1); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
+        .gif-container img {
+            width: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .buttons {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 25px;
-            min-height: 120px;
+            gap: 20px;
+            position: relative;
+            height: 50px;
         }
 
         button {
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: 700;
+            padding: 10px 25px;
+            font-size: 18px;
             border: none;
-            border-radius: 50px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            font-family: 'Quicksand', sans-serif;
+            transition: transform 0.2s;
         }
 
         #yesBtn {
-            background: linear-gradient(45deg, #4cd137, #44bd32);
+            background-color: #28a745;
             color: white;
-            z-index: 100;
-            animation: gentlePulse 2s infinite;
-        }
-
-        @keyframes gentlePulse {
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(76, 209, 55, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(76, 209, 55, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(76, 209, 55, 0.3); }
         }
 
         #noBtn {
-            background: linear-gradient(45deg, var(--pink-dark), #c2185b);
+            background-color: #dc3545;
             color: white;
-            position: relative;
+            position: absolute;
         }
 
-        .hidden { display: none; }
-        
-        #successSection h2 {
-            color: var(--pink-dark);
-            font-family: 'Dancing Script', cursive;
-            font-size: 32px;
-            line-height: 1.4;
-            margin-bottom: 30px;
-        }
-        
-        /* Ajuste para móviles */
-        @media (max-width: 480px) {
-            h1 { font-size: 30px; }
-            .big-heart-pulse { font-size: 80px; }
-            button { padding: 12px 20px; font-size: 18px; }
+        .success-message {
+            display: none;
         }
 
+        .success-message h2 {
+            color: #d63384;
+        }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
         <div id="askSection">
-            <h1 id="question">¿Me darías el honor de ser tu San Valentín? ❤️</h1>
-            
-            <div class="visual-center">
-                <div class="big-heart-pulse" id="mainVisual">❤️</div>
+            <h1 id="question">Puedo ser tu San Valentín?💞💞</h1>
+            <div class="gif-container">
+                <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJteGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Cutedog">
             </div>
-
             <div class="buttons">
-                <button id="yesBtn">chi💖</button>
-                <button id="noBtn">no, por feo🥺</button>
+                <button id="yesBtn">chi jiji💖</button>
+                <button id="noBtn">nou por feo🥺</button>
             </div>
         </div>
 
-        <div id="successSection" class="hidden">
-            <h2>¡SIII! ¡Sabía que sí mi amor! VAMUUUUUUU TEEEE AMOOOOOO MASS DE LO Q IMAGINAS 💗💗💗</h2>
-            
-            <div class="visual-center">
-                <div class="celebration-emojis">🎉💑✨💖💍</div>
+        <div class="success-message" id="successSection">
+            <h2>TIIIIIIIII JIJIJIJI    TEEEEEE AMOOOOOOOO MUTUNESSS MI AMORRR BELLO💗💗💗💗💗</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJteGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF0ODLLjhza/giphy.gif" alt="Happy Cat">
             </div>
         </div>
     </div>
@@ -202,70 +102,29 @@
         const yesBtn = document.getElementById('yesBtn');
         const askSection = document.getElementById('askSection');
         const successSection = document.getElementById('successSection');
-        const mainVisual = document.getElementById('mainVisual');
 
-        let yesScale = 1;
-
-        // 1. Rastro de corazones del mouse (más sutil)
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() < 0.3) { // Solo crea el rastro a veces para no saturar
-                const trail = document.createElement('div');
-                trail.classList.add('heart-trail');
-                trail.innerHTML = '✨'; 
-                trail.style.left = e.pageX + 'px';
-                trail.style.top = e.pageY + 'px';
-                document.body.appendChild(trail);
-                setTimeout(() => trail.remove(), 800);
-            }
+        // Función para mover el botón "No" a una posición aleatoria
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
         });
 
-        // 2. Lluvia de fondo mejorada
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            const hearts = ['❤️', '💖', '🌸', '✨', '🥰'];
-            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 7000);
-        }
-        setInterval(createHeart, 500);
+        // Por si intentan clickearlo rápido en móvil
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
 
-        // 3. Lógica del botón No
-        noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
-
-        function moveButton() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40); // Margen de seguridad
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = Math.max(20, x) + 'px'; // Evita que se salga mucho
-            noBtn.style.top = Math.max(20, y) + 'px';
-
-            yesScale += 0.25; // Crece más rápido
-            yesBtn.style.transform = `scale(${yesScale})`;
-
-            // Cambiar el visual central si insiste mucho
-            if(yesScale > 1.8 && mainVisual.innerHTML === '❤️') {
-                mainVisual.innerHTML = '🥺';
-                mainVisual.style.animation = 'none'; // Detener el pulso fuerte
-                setTimeout(() => { mainVisual.style.animation = 'intensePulse 0.5s ease-in-out infinite'; }, 100); // Pulso rápido de nervios
-            }
-        }
-
-        // 4. Botón Sí
+        // Acción al presionar "Sí"
         yesBtn.addEventListener('click', () => {
-            askSection.classList.add('hidden');
-            successSection.classList.remove('hidden');
-            // Cambio de fondo a un degradado más intenso
-            document.body.style.background = "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)";
-            
-            // Lluvia masiva de celebración
-            for(let i=0; i<80; i++) {
-                setTimeout(createHeart, i * 40);
-            }
+            askSection.style.display = 'none';
+            successSection.style.display = 'block';
         });
     </script>
 </body>
