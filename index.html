@@ -4,95 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Quieres ser mi San Valentín? ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --pink-light: #ffebf0;
+            --pink-medium: #ff85a1;
+            --pink-dark: #d63384;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #ffe4e1; /* Rosa pastel */
-            font-family: 'Arial', sans-serif;
+            background-color: var(--pink-light);
+            font-family: 'Quicksand', sans-serif;
             overflow: hidden;
+            transition: background 0.5s;
+        }
+
+        /* Corazones flotantes de fondo */
+        .floating-heart {
+            position: absolute;
+            color: var(--pink-medium);
+            font-size: 20px;
+            pointer-events: none;
+            animation: float 4s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
         .container {
             text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
+            max-width: 450px;
             width: 90%;
+            z-index: 10;
+            border: 3px solid white;
         }
 
         h1 {
-            color: #d63384;
-            font-size: 24px;
+            color: var(--pink-dark);
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
             margin-bottom: 20px;
         }
 
         .gif-container img {
-            width: 200px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            width: 100%;
+            max-width: 250px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .buttons {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
-            position: relative;
-            height: 50px;
+            min-height: 100px;
         }
 
         button {
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-size: 18px;
+            font-weight: bold;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         #yesBtn {
-            background-color: #28a745;
+            background-color: #4cd137;
             color: white;
+            z-index: 100;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #44bd32;
         }
 
         #noBtn {
-            background-color: #dc3545;
+            background-color: var(--pink-dark);
             color: white;
-            position: absolute;
+            position: relative;
         }
 
-        .success-message {
-            display: none;
+        /* Pantalla final */
+        .hidden { display: none; }
+        
+        #successSection h2 {
+            color: var(--pink-dark);
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
         }
 
-        .success-message h2 {
-            color: #d63384;
-        }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
         <div id="askSection">
-            <h1 id="question">¿Quieres ser mi San Valentín? ❤️</h1>
+            <h1 id="question">¿Me darías el honor de ser mi San Valentín? ❤️</h1>
             <div class="gif-container">
-                <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJteGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Cutedog">
+                <img id="mainGif" src="https://media.tenor.com/9O0_m7vS84AAAAAi/cute-bear-cry.gif" alt="Oso triste">
             </div>
             <div class="buttons">
-                <button id="yesBtn">Sí</button>
-                <button id="noBtn">No</button>
+                <button id="yesBtn">¡SÍ! 🥰</button>
+                <button id="noBtn">No 🥺</button>
             </div>
         </div>
 
-        <div class="success-message" id="successSection">
-            <h2>¡Sabía que dirías que sí! 🥰</h2>
+        <div id="successSection" class="hidden">
+            <h2>¡SIII! ¡Te amo muchísimo! 💖</h2>
             <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJteGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxeGZ6bm93YXpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF0ODLLjhza/giphy.gif" alt="Happy Cat">
+                <img src="https://media.tenor.com/gU_Pb_769_UAAAAi/bear-kiss-bear-love.gif" alt="Osos besándose">
             </div>
         </div>
     </div>
@@ -102,29 +141,57 @@
         const yesBtn = document.getElementById('yesBtn');
         const askSection = document.getElementById('askSection');
         const successSection = document.getElementById('successSection');
+        const mainGif = document.getElementById('mainGif');
 
-        // Función para mover el botón "No" a una posición aleatoria
-        noBtn.addEventListener('mouseover', () => {
+        let yesScale = 1;
+        let noScale = 1;
+
+        // Crear corazones de fondo automáticamente
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 400);
+
+        // Lógica para que el botón "No" escape y el "Sí" crezca
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
+
+        function moveButton() {
+            // Mover botón No
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
+            noBtn.style.position = 'absolute';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
-        });
 
-        // Por si intentan clickearlo rápido en móvil
-        noBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        });
+            // Hacer crecer el botón Sí
+            yesScale += 0.15;
+            noScale -= 0.05;
+            yesBtn.style.transform = `scale(${yesScale})`;
+            noBtn.style.transform = `scale(${noScale})`;
+
+            // Cambiar el GIF a uno más triste si insiste
+            if(yesScale > 1.5) {
+                mainGif.src = "https://media.tenor.com/Np_fS6YstS4AAAAAi/mocha-bear-crying.gif";
+            }
+        }
 
         // Acción al presionar "Sí"
         yesBtn.addEventListener('click', () => {
-            askSection.style.display = 'none';
-            successSection.style.display = 'block';
+            askSection.classList.add('hidden');
+            successSection.classList.remove('hidden');
+            document.body.style.backgroundColor = "#ffb6c1";
+            
+            // Lluvia masiva de corazones al final
+            for(let i=0; i<50; i++) {
+                setTimeout(createHeart, i * 50);
+            }
         });
     </script>
 </body>
