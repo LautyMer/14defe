@@ -3,196 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi amor❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <title>Sos el amur de mi vidam sabes💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --pink-light: #ffebf0;
-            --pink-medium: #ff85a1;
-            --pink-dark: #d63384;
+            --pink-soft: #ffdee9;
+            --pink-glow: #b5fffc;
+            --text-color: #d63384;
+            --glass: rgba(255, 255, 255, 0.4);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: var(--pink-light);
+            background: linear-gradient(135deg, var(--pink-soft) 0%, #b5fffc 100%);
             font-family: 'Quicksand', sans-serif;
             overflow: hidden;
-            transition: background 0.5s;
+            transition: background 1s ease;
         }
 
-        /* Corazones flotantes de fondo */
-        .floating-heart {
+        /* Fondo de estrellas fugaces */
+        .stars {
             position: absolute;
-            color: var(--pink-medium);
-            font-size: 20px;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
-            animation: float 4s linear infinite;
-            opacity: 0.6;
+            z-index: 0;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        .container {
+        /* Contenedor Principal Aesthetic */
+        .main-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 40px;
+            padding: 40px 25px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
-            max-width: 450px;
             width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+            position: relative;
             z-index: 10;
-            border: 3px solid white;
+            animation: fadeIn 1.5s ease;
         }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         h1 {
-            color: var(--pink-dark);
-            font-family: 'Dancing Script', cursive;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .gif-container img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 20px;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-color);
+            font-size: 1.8rem;
             margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            line-height: 1.3;
         }
 
-        .buttons {
+        /* ROLLO FOTOGRÁFICO (Carousel) */
+        .photo-frame {
+            width: 260px;
+            height: 320px;
+            background: white;
+            margin: 0 auto 30px;
+            padding: 12px 12px 50px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: rotate(-2deg);
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: calc(100% - 24px);
+            height: calc(100% - 62px);
+            object-fit: cover;
+            position: absolute;
+            top: 12px; left: 12px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            border-radius: 4px;
+        }
+
+        .photo-frame img.active { opacity: 1; }
+
+        /* Botones */
+        .btn-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             min-height: 100px;
         }
 
         button {
-            padding: 12px 25px;
-            font-size: 18px;
-            font-weight: bold;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
+            padding: 14px 28px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
         }
 
         #yesBtn {
-            background-color: #4cd137;
-            color: white;
-            z-index: 100;
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-            background-color: #44bd32;
+            background: white;
+            color: var(--text-color);
+            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.2);
         }
 
         #noBtn {
-            background-color: var(--pink-dark);
+            background: transparent;
             color: white;
+            border: 1.5px solid white;
             position: relative;
         }
 
-        /* Pantalla final */
+        /* Éxito */
         .hidden { display: none; }
-        
-        #successSection h2 {
-            color: var(--pink-dark);
-            font-family: 'Dancing Script', cursive;
-            font-size: 36px;
+        .success-msg {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
+        /* Sección Cúrame */
+        .curame-box {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #meaning {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 15px;
+            display: none;
+            text-align: left;
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .desc-btn {
+            background: rgba(255,255,255,0.5);
+            color: var(--text-color);
+            font-size: 0.7rem;
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 1px solid white;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainContainer">
-        <div id="askSection">
-            <h1 id="question">Me darías el honor de ser tu San Valentín?💗💗</h1>
-            <div class="gif-container">
-                <img id="mainGif" src="https://media.tenor.com/9O0_m7vS84AAAAAi/cute-bear-cry.gif" alt="Oso triste">
+    <audio id="player" loop>
+        <source src="https://files.catbox.moe/p9p3id.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="main-card">
+        <div id="ask">
+            <h1>¿Me darías el honor de ser tu San Valentín? ❤️</h1>
+            
+            <div class="photo-frame" id="carousel">
+                <img src="https://i.postimg.cc/85M2p0Wz/Whats-App-Image-2025-02-11-at-5-26-28-PM.jpg" class="active">
+                <img src="https://i.postimg.cc/j5P65X84/Whats-App-Image-2025-02-11-at-5-26-28-PM-1.jpg">
+                <img src="https://i.postimg.cc/k47tV2Hj/Whats-App-Image-2025-02-11-at-5-26-29-PM.jpg">
+                <img src="https://i.postimg.cc/Y9mF4y0P/Whats-App-Image-2025-02-11-at-5-26-29-PM-1.jpg">
             </div>
-            <div class="buttons">
-                <button id="yesBtn">chipi jiji💞</button>
-                <button id="noBtn">no feo</button>
+
+            <div class="btn-wrap">
+                <button id="yesBtn">chi💖</button>
+                <button id="noBtn">no, por feo🥺</button>
             </div>
         </div>
 
-        <div id="successSection" class="hidden">
-            <h2>TIPIIIIIIIIIIII JIJIJIJIJI💝💝💝       TEEEE AMOOOOOOOOO MUTUUUNESSS MILLLL TRILLONESSS DE ACA HASTA EL SOL IDA Y VUELTA 💗💗💗💗💗</h2>
-            <div class="gif-container">
-                <img src="https://media.tenor.com/gU_Pb_769_UAAAAi/bear-kiss-bear-love.gif" alt="Osos besándose">
+        <div id="success" class="hidden">
+            <p class="success-msg">TIIIIIIIIPIIIIIII VAMUUUUUUU TEEEE AMOOOOOO MASS DE LO Q IMAGINAS AMOR💗💗💗💗💗</p>
+            <div class="photo-frame">
+                <img src="https://i.postimg.cc/k47tV2Hj/Whats-App-Image-2025-02-11-at-5-26-29-PM.jpg" class="active">
+            </div>
+            
+            <div class="curame-box">
+                <div id="meaning">
+                    <strong>Significado de Cúrame:</strong><br>
+                    Esta canción de Mon Laferte representa la entrega total. Es pedirle a esa persona que sea nuestro refugio, que nos cure con su amor y que acepte nuestra vulnerabilidad. Es el deseo de ser sanados a través de la conexión verdadera.
+                </div>
+                <button class="desc-btn" onclick="showText()">Descripción de Cúrame ✨</button>
             </div>
         </div>
     </div>
 
     <script>
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const askSection = document.getElementById('askSection');
-        const successSection = document.getElementById('successSection');
-        const mainGif = document.getElementById('mainGif');
+        const no = document.getElementById('noBtn');
+        const yes = document.getElementById('yesBtn');
+        const music = document.getElementById('player');
+        const imgs = document.querySelectorAll('#carousel img');
+        let idx = 0;
+        let scale = 1;
 
-        let yesScale = 1;
-        let noScale = 1;
+        // Cambiar fotos cada 3 segundos
+        setInterval(() => {
+            imgs[idx].classList.remove('active');
+            idx = (idx + 1) % imgs.length;
+            imgs[idx].classList.add('active');
+        }, 3000);
 
-        // Crear corazones de fondo automáticamente
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            heart.innerHTML = '💗';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
-        }
-        setInterval(createHeart, 400);
+        // Mover botón No y música
+        no.addEventListener('mouseover', move);
+        no.addEventListener('touchstart', (e) => { e.preventDefault(); move(); });
 
-        // Lógica para que el botón "No" escape y el "Sí" crezca
-        noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
-
-        function moveButton() {
-            // Mover botón No
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-
-            // Hacer crecer el botón Sí
-            yesScale += 0.15;
-            noScale -= 0.05;
-            yesBtn.style.transform = `scale(${yesScale})`;
-            noBtn.style.transform = `scale(${noScale})`;
-
-            // Cambiar el GIF a uno más triste si insiste
-            if(yesScale > 1.5) {
-                mainGif.src = "https://media.tenor.com/Np_fS6YstS4AAAAAi/mocha-bear-crying.gif";
-            }
+        function move() {
+            music.play().catch(() => {});
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 50);
+            no.style.position = 'fixed';
+            no.style.left = x + 'px';
+            no.style.top = y + 'px';
+            scale += 0.25;
+            yes.style.transform = `scale(${scale})`;
         }
 
-        // Acción al presionar "Sí"
-        yesBtn.addEventListener('click', () => {
-            askSection.classList.add('hidden');
-            successSection.classList.remove('hidden');
-            document.body.style.backgroundColor = "#ffb6c1";
-            
-            // Lluvia masiva de corazones al final
-            for(let i=0; i<50; i++) {
-                setTimeout(createHeart, i * 50);
-            }
+        yes.addEventListener('click', () => {
+            document.getElementById('ask').classList.add('hidden');
+            document.getElementById('success').classList.remove('hidden');
+            document.body.style.background = "#ffb6c1";
         });
+
+        function showText() {
+            const m = document.getElementById('meaning');
+            m.style.display = m.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
 </body>
 </html>
