@@ -208,21 +208,6 @@
             </div>
         </div>
     </div>
-    <script>
-  // Intentar reproducir apenas cargue (por si el navegador lo permite)
-  window.addEventListener('load', () => {
-    const audio = document.getElementById('miMusica');
-    audio.play().catch(error => {
-      console.log("El navegador bloqueó el autoplay. Esperando interacción...");
-    });
-  });
-
-  // Si se bloqueó, se activará al primer clic que el usuario haga en la página
-  document.addEventListener('click', () => {
-    const audio = document.getElementById('miMusica');
-    audio.play();
-  }, { once: true }); // '{ once: true }' hace que esto solo pase una vez
-</script>
 
     <script>
         const noBtn = document.getElementById('noBtn');
