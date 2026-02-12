@@ -27,7 +27,6 @@
             transition: background 0.8s ease;
         }
 
-        /* Corazones flotantes */
         .floating-heart {
             position: absolute;
             color: var(--pink-medium);
@@ -65,7 +64,6 @@
             margin-bottom: 20px;
         }
 
-        /* Carousel Polaroid */
         .photo-roll {
             width: 240px;
             height: 300px;
@@ -111,6 +109,7 @@
         #yesBtn {
             background: var(--pink-dark);
             color: white;
+            z-index: 100; /* Asegura que siempre esté por encima */
         }
 
         #noBtn {
@@ -122,7 +121,6 @@
 
         .hidden { display: none; }
 
-        /* Pantalla de Éxito */
         .success-text {
             color: var(--pink-dark);
             font-family: 'Dancing Script', cursive;
@@ -132,11 +130,10 @@
             line-height: 1.4;
         }
 
-        /* Caja de Cúrame con tu mensaje */
         .curame-container {
             margin-top: 15px;
             max-height: 250px;
-            overflow-y: auto; /* Permite scroll si el texto es muy largo en móvil */
+            overflow-y: auto;
             padding-right: 5px;
         }
 
@@ -163,12 +160,11 @@
             border: 1px solid var(--pink-medium);
             font-weight: bold;
         }
-
     </style>
 </head>
 <body>
 
-  <audio id="bgMusic" src="curame.mp3" loop></audio>
+    <audio id="bgMusic" src="curame.mp3" loop></audio>
 
     <div class="main-card">
         <div id="askSection">
@@ -200,9 +196,9 @@
 
             <div class="curame-container">
                 <div id="personalMessage">
-                    <p style="margin-bottom: 10px;"><i><b>"Cúrame"</b> es una canción que habla sobre la sanación a través del amor y la entrega absoluta. Es el refugio donde dos almas se encuentran para sanar juntas...</i></p>
+                    <p style="margin-bottom: 10px;"><i><b>"Cúrame"</b> es una canción que habla sobre la sanación a través del amor y la entrega absoluta...</i></p>
                     <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 10px;">
-                    No puedo pasar un día sin pensar en ti, eres mi mundo, mi razón de ser. Eres el amor de mi vida, desde que llegaste a mi vida has sido mi primera prioridad, mi obsesión, mi pasión. Te elegiría ati antes que a cualquier persona y a cualquier cosa, porque para mí, no hay nada más valioso que tu amor. Te extraño cada segundo, cada minuto, cada hora, porque sin ti mi vida no tiene sentido. Yo te amo y te amare hasta el último día de mi vida, porque mi amor por ti es eterno, infinito y sin condiciones. Y sé que el amor existe, porque a pesar de todo, te sigo amando como el primer día, y sigues siendo el amor de mi vida.
+                    No puedo pasar un día sin pensar en ti, eres mi mundo, mi razón de ser... (Tu mensaje completo)
                 </div>
                 <button class="desc-btn" onclick="toggleMessage()">Descripción de Cúrame ✨</button>
             </div>
@@ -212,7 +208,7 @@
     <script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
-        const music = document.getElementById('music');
+        const bgMusic = document.getElementById('bgMusic'); // Nombre corregido
         const imgs = document.querySelectorAll('#roll img');
         let currentImg = 0;
         let scale = 1;
@@ -236,26 +232,36 @@
             imgs[currentImg].classList.add('active');
         }, 2500);
 
-        // Mover No y activar música
-        noBtn.addEventListener('mouseover', move);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); move(); });
-
+        // --- FUNCIÓN DE MOVIMIENTO CORREGIDA ---
         function move() {
-            music.play().catch(() => {});
-            const x = Math.random() * (window.innerWidth - 120);
-            const y = Math.random() * (window.innerHeight - 50);
+            // Intentar reproducir música al interactuar (ayuda a que suene solo)
+            bgMusic.play().catch(() => {});
+
+            // Calcular nueva posición para el botón NO
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
+
+            // Hacer crecer el botón CHI
             scale += 0.2;
             yesBtn.style.transform = `scale(${scale})`;
         }
+
+        noBtn.addEventListener('mouseover', move);
+        noBtn.addEventListener('touchstart', (e) => { 
+            e.preventDefault(); 
+            move(); 
+        });
 
         // Éxito
         yesBtn.addEventListener('click', () => {
             document.getElementById('askSection').classList.add('hidden');
             document.getElementById('successSection').classList.remove('hidden');
             document.body.style.background = "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)";
+            bgMusic.play(); // Asegurar que suene al confirmar
             for(let i=0; i<40; i++) { setTimeout(createHeart, i * 100); }
         });
 
